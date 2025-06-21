@@ -69,7 +69,7 @@ A organização do projeto segue uma estrutura de pacotes lógica, visando a sep
 ├── temp/                   # Exemplo de diretório para arquivos ZIP temporários
 ├── extracted_data/         # Exemplo de diretório para dados extraídos
 ├── pom.xml                 # Arquivo de configuração do Maven
-└── DOCUMENTAÇÃO.md               # Este arquivo
+└── Readme.md               # Este arquivo
 ````
 
 ---
