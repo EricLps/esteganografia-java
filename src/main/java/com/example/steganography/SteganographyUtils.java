@@ -15,17 +15,17 @@ public class SteganographyUtils {
     }
 
     /**
-     * @param originalImagePath Levar a imagem original
-     * @param dataToHidePath Caminho do item que iremos ocultar
-     * @param zipTempPath Caminho temporário para o zip
-     * @param outputImagePath Caminho temporário para a imagem modificada
+     * @param originalImagePath levar a imagem original
+     * @param dataToHidePath caminho do item que iremos ocultar
+     * @param zipTempPath caminho temporário para o zip
+     * @param outputImagePath caminho temporário para a imagem modificada
      * @throws SteganographyException caso ocorra um erro
      */
     public void embedData(String originalImagePath, String dataToHidePath, String zipTempPath, String outputImagePath)
             throws SteganographyException {
         System.out.println("Iniciando ocultação de dados...");
 
-        // Carrega a imagem original
+        //carrega a imagem original
         BufferedImage image = imageProcessor.loadImage(originalImagePath);
         System.out.println("Imagem original carregada: " + originalImagePath);
 
@@ -96,7 +96,7 @@ public class SteganographyUtils {
         }
         System.out.println("Dados ocultados na imagem. Bits processados: " + bitIndex);
 
-        // salva a imagem com os dados ocultos
+        //salva a imagem com os dados ocultos
         imageProcessor.saveImage(image, outputImagePath);
         System.out.println("Imagem com dados ocultos salva em: " + outputImagePath);
     }
