@@ -14,13 +14,6 @@ public class SteganographyUtils {
         this.dataConverter = dataConverter;
     }
 
-    /**
-     * @param originalImagePath levar a imagem original
-     * @param dataToHidePath caminho do item que iremos ocultar
-     * @param zipTempPath caminho temporário para o zip
-     * @param outputImagePath caminho temporário para a imagem modificada
-     * @throws SteganographyException caso ocorra um erro
-     */
     public void embedData(String originalImagePath, String dataToHidePath, String zipTempPath, String outputImagePath)
             throws SteganographyException {
         System.out.println("Iniciando ocultação de dados...");
@@ -76,19 +69,22 @@ public class SteganographyUtils {
                 if (bitIndex < dataBits.length) {
                     red = (red & 0xFE) | (dataBits[bitIndex] ? 1 : 0);
                     bitIndex++;
-                } else break outerLoop;
+                } else 
+                    break outerLoop;
 
                 //verde
                 if (bitIndex < dataBits.length) {
                     green = (green & 0xFE) | (dataBits[bitIndex] ? 1 : 0);
                     bitIndex++;
-                } else break outerLoop;
+                } else 
+                    break outerLoop;
 
                 //azul
                 if (bitIndex < dataBits.length) {
                     blue = (blue & 0xFE) | (dataBits[bitIndex] ? 1 : 0);
                     bitIndex++;
-                } else break outerLoop;
+                } else 
+                    break outerLoop;
 
                 int newPixel = (alpha << 24) | (red << 16) | (green << 8) | blue;
                 imageProcessor.setPixel(image, x, y, newPixel);
@@ -101,12 +97,6 @@ public class SteganographyUtils {
         System.out.println("Imagem com dados ocultos salva em: " + outputImagePath);
     }
 
-    /**
-     * extrai os dados da imagem lsb onde os dados foram ocultados
-     * @param stegoImagePath caminho para a imagem com os lsb ocultos
-     * @param outputDirectory diretorio onde o arquivo extraido sera salvo
-     * @throws SteganographyException caso ocorra um erro durante o processo
-     */
     public void extractData(String stegoImagePath, String outputDirectory)
             throws SteganographyException {
         System.out.println("Iniciando extração de dados...");

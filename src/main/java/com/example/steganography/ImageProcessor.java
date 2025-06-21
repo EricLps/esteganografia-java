@@ -13,17 +13,9 @@ import javax.imageio.ImageIO;
 import com.example.steganography.exceptions.SteganographyException;
 
 public class ImageProcessor {
-
-    /**
-     * carrega um PNG de um arquivo
-     *
-     * @param imagePath caminho para o arquivo da imagem.
-     * @return imagem carregada como um BufferedImage.
-     * @throws SteganographyException se o arquivo não puder ser lido ou não for um PNG válido.
-     */
     public BufferedImage loadImage(String imagePath) throws SteganographyException {
-        Path imageFilePath = Paths.get(imagePath); // usar Path para Files.newInputStream
-        File imageFile = imageFilePath.toFile(); // manter File para verificação de existência/tipo
+        Path imageFilePath = Paths.get(imagePath); // usar path para files.newInputStream
+        File imageFile = imageFilePath.toFile(); // manter file para verificação de existência/tipo
 
         if (!imageFile.exists()) {
             throw new SteganographyException("Arquivo de imagem não encontrado: " + imagePath);
@@ -36,8 +28,8 @@ public class ImageProcessor {
         }
 
         try (InputStream is = Files.newInputStream(imageFilePath)) {
-            BufferedImage image = ImageIO.read(is);
             // se a imagem for null, significa que não foi possível ler como imagem.
+            BufferedImage image = ImageIO.read(is);
             if (image == null) {
                 throw new SteganographyException("O arquivo não pôde ser lido como uma imagem PNG válida. Formato não reconhecido ou arquivo corrompido: " + imagePath);
             }
